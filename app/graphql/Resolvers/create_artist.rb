@@ -1,5 +1,5 @@
-class Resolvers::CreateArtist < Graphql::Function 
-	AuthProviderInput = Graphql::InputObjectType.define do
+class Resolvers::CreateArtist < GraphQL::Function 
+	AuthProviderInput = GraphQL::InputObjectType.define do
 		name 'AuthProviderSignupData'
 
 		argument :email, Types::AuthProviderEmailInput
@@ -7,7 +7,7 @@ class Resolvers::CreateArtist < Graphql::Function
 
 	argument :name, !types.String
 	argument :about, types.String
-	argument :email, !AuthProviderInput
+	argument :authProvider, !AuthProviderInput
 
 	type Types::ArtistType
 

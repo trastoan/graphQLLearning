@@ -1,8 +1,9 @@
-Types::ArtistType = Graphql::ObjectType.define do
+Types::ArtistType = GraphQL::ObjectType.define do
 	name 'Artist'
 
-	field: id, !types.ID
-	field: name, !types.String
-	field: about, types.String
-	field: email, !types.String
+	field :id, !types.ID
+	field :name, !types.String
+	field :email, !types.String
+	field :about, types.String
+	
 end
