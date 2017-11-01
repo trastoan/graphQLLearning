@@ -6,11 +6,12 @@ class Resolvers::CreatePerformance < GraphQL::Function
 
 	type Types::PerformanceType
 
-	def call(_obj, args, _ctx) 
+	def call(obj, args, ctx) 
 		Performance.create!(
 			title: args[:title],
 			about: args[:about],
-			place: args[:place]
+			place: args[:place],
+			artist: ctx[:current_user]
 		)
 	end
 end
