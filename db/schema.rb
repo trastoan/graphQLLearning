@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20171107132525) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "applauses", force: :cascade do |t|
-    t.integer "performance_id"
-    t.integer "artist_id"
+    t.bigint "performance_id"
+    t.bigint "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_applauses_on_artist_id"
@@ -36,8 +39,11 @@ ActiveRecord::Schema.define(version: 20171107132525) do
     t.text "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "artist_id"
+    t.bigint "artist_id"
     t.index ["artist_id"], name: "index_performances_on_artist_id"
   end
 
+  add_foreign_key "applauses", "artists"
+  add_foreign_key "applauses", "performances"
+  add_foreign_key "performances", "artists"
 end
