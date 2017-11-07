@@ -1,7 +1,7 @@
 class Resolvers::CreatePerformance < GraphQL::Function 
 	
 	argument :title, !types.String
-	argument :about, !types.String
+	argument :about, types.String
 	argument :place, !types.String
 
 	type Types::PerformanceType

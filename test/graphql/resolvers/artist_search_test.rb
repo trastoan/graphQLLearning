@@ -6,6 +6,20 @@ class Resolvers::ArtistSearchTest < ActiveSupport::TestCase
 	end
 
 
+	test 'skip option' do
+		artist = create :artist, name: 'old'
+		create :artist, name: 'new'
+
+		assert_equal find(skip: 1), [artist]
+	end
+
+	test 'first option' do
+		artist = create :artist, name: 'old'
+		create :artist, name: 'new'
+
+		assert_equal find(first: 1), [artist]
+	end
+
 	test 'filter_options' do
 		artist1 = create :artist, name: 'Adam1', email: 'adam1@mail.com'
 		artist2 = create :artist, name: 'Adam2', email: 'adam2@mail.com'
