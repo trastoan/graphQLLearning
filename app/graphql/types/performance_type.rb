@@ -9,4 +9,5 @@ Types::PerformanceType = GraphQL::ObjectType.define do
 	# - "-> { }": helps against loading issues between types
   	# - "property": remaps field to an attribute of Performance model
 	field :createdBy, -> {Types::ArtistType}, property: :artist
+	field :applauses, -> { !types[Types::ApplauseType]}
 end

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :applause do
-    performance nil
-    artist ""
+    performance
+    artist
   end
 end
