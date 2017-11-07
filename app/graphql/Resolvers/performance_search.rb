@@ -19,6 +19,18 @@ class Resolvers::PerformanceSearch
 	end
 
 	option :filter, type: PerformanceFilter, with: :apply_filter
+	option :first, type: types.Int, with: :apply_first
+	option :skip, type: types.Int, with: :apply_skip
+
+	def apply_first(scope, value)
+		scope.limit(value)
+	end
+
+
+	def apply_skip(scope, value)
+		scope.offset(value)
+	end
+
 
 	def apply_filter(scope, value)
 		branches = normalize_filters(value).reduce { |a, b| a.or(b) }

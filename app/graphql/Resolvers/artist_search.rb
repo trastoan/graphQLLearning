@@ -16,7 +16,21 @@ class Resolvers::ArtistSearch
 		argument :email_contains, types.String
 	end
 
+
 	option :filter, type: ArtistFilter, with: :apply_filter
+	# Can be generalized on a interface or something like that
+	option :first, type: types.Int, with: :apply_first
+	option :skip, type: types.Int, with: :apply_skip
+
+	def apply_first(scope, value)
+		scope.limit(value)
+	end
+
+
+	def apply_skip(scope, value)
+		scope.offset(value)
+	end
+ 	# end generalization
 
 	def apply_filter(scope, value)
 		branches = normalize_filters(value).reduce { |a, b| a.or(b)}
